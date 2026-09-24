@@ -23,3 +23,14 @@ Prompt:
 | `veo3_1_lite` | 4 s + audio | 6 | not tried |
 | `seedance_2_0_mini` | 720p, 5 s | 5 | ❌ needs Basic |
 | `grok_video` | 5 s | 7.5 | ❌ needs Basic |
+
+## Motion-graphic v1 (0 credits)
+
+- Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/cc63d1e3-b1d6-427a-8636-c7f31649199b.mp4
+- Preview sheet: https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/464868e5-ac9d-45e2-ac5a-169347005dd0.jpg
+- 1920×1080, 30 fps, 5 s, AAC audio — rendered procedurally by [`mograph/render.py`](mograph/render.py)
+  (Pillow + numpy + ffmpeg), no AI generation.
+- Timeline: speed lines + converging ring (0–0.6 s) → elastic logo slam with flash, shockwaves,
+  sparks and camera shake (0.6 s) → rotating rays, orbiting coins, embers, beat pulses, shine sweeps
+  (1.6 s, 3.4 s) and lightning (1.15/2.45/3.05/3.85 s) → zoom-through and fade to black (4.35–5 s).
+- Re-render: `python3 render.py logo.png out.mp4 preview.jpg` (timings are constants at the top of the file).
