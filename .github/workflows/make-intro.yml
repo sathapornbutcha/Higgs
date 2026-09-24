@@ -1,0 +1,39 @@
+name: Make intro clip
+
+on:
+  workflow_dispatch:
+    inputs:
+      logo:
+        description: "Logo PNG (transparent background) — Google Drive share link, image URL, or a path in this repo"
+        required: true
+        default: "https://drive.google.com/file/d/1_53IwLgUiRIk2cWbpJhWjRbXs1ZUcrnz/view?usp=sharing"
+      styles:
+        description: "Styles: all, or a comma list of energy, glitch, claw, comic, portal"
+        required: true
+        default: "all"
+      name:
+        description: "Output file prefix"
+        required: true
+        default: "intro"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pillow numpy imageio-ffmpeg
+      - name: Render
+        env:
+          LOGO: ${{ inputs.logo }}
+          STYLES: ${{ inputs.styles }}
+          NAME: ${{ inputs.name }}
+        run: python3 intro/mograph/make_intro.py --logo "$LOGO" --styles "$STYLES" --name "$NAME" --out out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.name }}-intro-clips
+          path: out/
+          retention-days: 30

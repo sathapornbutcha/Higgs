@@ -1,13 +1,8 @@
-"""The Snatchers — motion-graphic YouTube intro (no AI credits).
-
-Renders a 5 s 1920x1080 30 fps intro from the transparent logo PNG using
-Pillow + numpy, synthesises the SFX with numpy, and muxes with ffmpeg.
-
-    python3 render.py logo.png out.mp4 [preview.jpg]
-"""
-import math, random, subprocess, sys, time, wave
+"""Energy Slam: speed lines, elastic logo slam with flash/shockwave/sparks, rays, orbiting coins, lightning, zoom-through."""
+import math, random, wave
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
+from core import load_logo
 
 W, H, FPS, DUR, SR = 1920, 1080, 30, 5.0, 44100
 N = int(FPS * DUR)
@@ -26,13 +21,7 @@ clamp = lambda x, a=0.0, b=1.0: max(a, min(b, x))
 e_out = lambda p: 1 - (1 - p) ** 3
 e_in = lambda p: p ** 3
 
-# ---------- static layers ----------
-logo_path, out_path = sys.argv[1], sys.argv[2]
-prev_path = sys.argv[3] if len(sys.argv) > 3 else None
-LOGO = Image.open(logo_path).convert("RGBA")
-LOGO = LOGO.crop(LOGO.getbbox())
-LH = 880
-LW = round(LOGO.width * LH / LOGO.height)
+LOGO, LW, LH = None, 0, 880
 
 yy, xx = np.mgrid[0:CH, 0:CW]
 r = np.clip(np.hypot(xx - CX, yy - CY) / (CW / 2), 0, 1) ** 0.8
@@ -274,23 +263,15 @@ def audio(path):
         w.writeframes(np.repeat(pcm, 2).tobytes())
 
 
-if __name__ == "__main__":
-    t0 = time.time()
-    audio("sfx.wav")
-    ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-                           "-i", "-", "-i", "sfx.wav", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
-                           "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path], stdin=subprocess.PIPE)
-    PREV = (9, 19, 26, 54, 93, 138)
-    sheet = Image.new("RGB", (1920, 720)) if prev_path else None
-    for i in range(N):
-        fr = frame(i)
-        ff.stdin.write(fr.tobytes())
-        if sheet and i in PREV:
-            k = PREV.index(i)
-            sheet.paste(fr.resize((640, 360)), ((k % 3) * 640, (k // 3) * 360))
-            print(f"t={i / FPS:.2f}s mean={np.asarray(fr).mean():.1f}", flush=True)
-    ff.stdin.close()
-    ff.wait()
-    if sheet:
-        sheet.save(prev_path, quality=85)
-    print(f"done in {time.time() - t0:.1f}s rc={ff.returncode}", flush=True)
+
+PREVIEW = (19, 26, 54, 138)
+
+
+class _Audio:
+    write = staticmethod(audio)
+
+
+def build(logo_path):
+    global LOGO, LW
+    LOGO, LW, _ = load_logo(logo_path, LH)
+    return frame, _Audio, PREVIEW

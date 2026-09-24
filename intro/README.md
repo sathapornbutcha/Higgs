@@ -24,13 +24,21 @@ Prompt:
 | `seedance_2_0_mini` | 720p, 5 s | 5 | ❌ needs Basic |
 | `grok_video` | 5 s | 7.5 | ❌ needs Basic |
 
-## Motion-graphic v1 (0 credits)
+## Motion-graphic intros (0 credits)
 
-- Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/cc63d1e3-b1d6-427a-8636-c7f31649199b.mp4
-- Preview sheet: https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/464868e5-ac9d-45e2-ac5a-169347005dd0.jpg
-- 1920×1080, 30 fps, 5 s, AAC audio — rendered procedurally by [`mograph/render.py`](mograph/render.py)
-  (Pillow + numpy + ffmpeg), no AI generation.
-- Timeline: speed lines + converging ring (0–0.6 s) → elastic logo slam with flash, shockwaves,
-  sparks and camera shake (0.6 s) → rotating rays, orbiting coins, embers, beat pulses, shine sweeps
-  (1.6 s, 3.4 s) and lightning (1.15/2.45/3.05/3.85 s) → zoom-through and fade to black (4.35–5 s).
-- Re-render: `python3 render.py logo.png out.mp4 preview.jpg` (timings are constants at the top of the file).
+Rendered procedurally (Pillow + numpy + ffmpeg, no AI) by [`mograph/make_intro.py`](mograph/make_intro.py);
+self-serve instructions (Thai): [HOW_TO.md](HOW_TO.md). 1920×1080, 30 fps, 5 s, AAC audio.
+
+| Style | Module | Video |
+|---|---|---|
+| Energy Slam | `energy.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/cc63d1e3-b1d6-427a-8636-c7f31649199b.mp4 |
+| Glitch / Cyber | `glitch.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/523217e3-e86d-40bf-a201-09dcee3b82f9.mp4 |
+| Claw Snatch | `claw.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/229b241c-2835-46bf-a561-cb85177b8f99.mp4 |
+| Comic Pop | `comic.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/77d20c1a-42e5-4fcd-b526-d9c68dcb5ddc.mp4 |
+| Magic Portal | `portal.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/60cd2b06-6f69-4fb4-8a38-8b952122df11.mp4 |
+
+Preview sheets: [energy](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/464868e5-ac9d-45e2-ac5a-169347005dd0.jpg),
+[other four](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/30de63af-3ae6-43ae-b20b-702bbd682ba6.jpg).
+
+Re-render: `python3 intro/mograph/make_intro.py --logo logo.png --styles all --out out`, or run the
+**Make intro clip** GitHub Actions workflow.
