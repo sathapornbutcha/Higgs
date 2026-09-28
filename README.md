@@ -9,7 +9,7 @@
 |---|---|---|
 | 🕵️ Heist | ห้องนิรภัย เลเซอร์ อุ้งเท้าฉกเหรียญ สัญญาณเตือน กระต่ายพุ่งผ่าน ไซเรน | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/9d496118-2f1b-4a6e-816e-a206403fd449.mp4) |
 | 🃏 Card Reveal | การ์ดหมุนเข้า พลิกโฮโลแกรม กระต่ายทะลุออกจากการ์ด | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/538b5c78-da03-446d-8787-96082df554cc.mp4) |
-| 🔷 Kinetic | วงกลมสีเปลี่ยนฉาก เส้นกราฟิก เผยกระต่ายในวงกลม รูปทรงโคจร | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/aed7f201-0df4-42a5-a34c-4af10878675e.mp4) |
+| 🔷 Kinetic | วงกลมสีเปลี่ยนฉาก เส้นกราฟิก เผยกระต่ายในวงกลม รูปทรงโคจร | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/0c04d757-1c73-43b5-993a-15863f783e7f.mp4) |
 
 ### 🐰 ใหม่: Elements Intro (Remotion, 60fps, 6 วิ) — ใช้ชิ้นส่วนจาก `intro/elements`
 
