@@ -49,14 +49,14 @@ export const Kinetic: React.FC = () => {
   // 4) the bunny revealed inside a growing circle, ring drawn around it
   const rv = eOut(clamp((t - KN.reveal) / 0.7));
   const ringDraw = eInOut(clamp((t - KN.reveal - 0.2) / 0.9));
-  const R = 330 * rv * (1 + beat);
+  const R = 300 * rv * (1 + beat);
   // 5) title wipe behind an orange bar
   const tw = eInOut(clamp((t - KN.text) / 0.7));
   const bar = t >= KN.text && t < KN.text + 0.95;
   // 6) iris out
   const iris = t < KN.out ? 3000 : 1400 * (1 - eIn(clamp((t - KN.out) / 0.7)));
   const hold = clamp((t - KN.hold) / 0.6);
-  const cy = 420;
+  const cy = 390;
   return (
     <AbsoluteFill style={{backgroundColor: '#000', overflow: 'hidden'}}>
       <Audio src={staticFile('sfx_kinetic.wav')} />
@@ -75,30 +75,6 @@ export const Kinetic: React.FC = () => {
             {[0, 1, 2, 3].map((i) => <circle key={`c${i}`} cx={1480 - i * 34} cy={210} r={9 * lp} fill={C.lilac} />)}
           </svg>
         )}
-        {rv > 0 && (
-          <>
-            <Circle x={960} y={cy} r={R} color={C.purple} />
-            <Circle x={960} y={cy} r={R + 34} color={C.orange} stroke={10} dash={`${2 * Math.PI * (R + 34) * ringDraw} 99999`} rot={-90 + t * 30} />
-            <Circle x={960} y={cy} r={R + 70} color={C.lilac} stroke={4} dash="14 22" rot={-t * 20} opacity={hold} />
-            <div style={{position: 'absolute', left: 960 - R, top: cy - R, width: 2 * R, height: 2 * R, borderRadius: '50%', overflow: 'hidden'}}>
-              <Img src={el('back_frame')} style={{position: 'absolute', left: -R * 0.3, top: -R * 0.3, width: R * 2.6, height: R * 2.6, opacity: 0.55, transform: `rotate(${t * 25}deg)`}} />
-            </div>
-            <Layer src="character" x={960} y={cy + 20 - 60 * (1 - rv)} w={620 * (0.6 + 0.4 * rv)} aspect={ASPECT.character}
-              transform={`translateY(${8 * Math.sin(t * 2.2) * hold}px) rotate(${2 * Math.sin(t * 1.3) * hold}deg) scale(${1 + beat})`}
-              opacity={clamp(rv * 3)} filter="drop-shadow(0 18px 18px rgba(20,5,40,0.45))">
-              <Shine src="character" t={t} at={[5.2, 7.4]} />
-            </Layer>
-          </>
-        )}
-        {t >= KN.text && (
-          <div style={{position: 'absolute', left: 960 - 440, top: 845 - 110, width: 880, height: 230, clipPath: `inset(0 ${100 - 100 * tw}% 0 0)`}}>
-            <Layer src="logo_text" x={440} y={110} w={860} aspect={ASPECT.logo_text} transform={`scale(${1 + beat})`} filter="drop-shadow(0 10px 12px rgba(0,0,0,0.4))">
-              <Shine src="logo_text" t={t} at={[4.6, 6.4, 8.2]} />
-            </Layer>
-          </div>
-        )}
-        {bar && <div style={{position: 'absolute', left: 960 - 460 + 920 * tw - 20, top: 740, width: 40, height: 220, borderRadius: 20, background: C.orange,
-          transform: `scaleY(${Math.sin(Math.PI * clamp((t - KN.text) / 0.95))})`}} />}
         {hold > 0 && new Array(12).fill(0).map((_, i) => {
           const th = (i / 12) * Math.PI * 2 + t * 0.5 * (i % 2 ? 1 : -1);
           const rr = (560 + 60 * Math.sin(t + i)) * eOut(hold);
@@ -109,6 +85,30 @@ export const Kinetic: React.FC = () => {
           const th = (i / 4) * Math.PI * 2 + t * 0.8;
           return <Coin key={`k${i}`} x={960 + 470 * Math.cos(th)} y={cy + 180 * Math.sin(th)} w={70} phase={t * 10 + i} opacity={hold * (Math.sin(th) > -0.2 ? 1 : 0.5)} />;
         })}
+        {rv > 0 && (
+          <>
+            <Circle x={960} y={cy} r={R} color={C.purple} />
+            <Circle x={960} y={cy} r={R + 34} color={C.orange} stroke={10} dash={`${2 * Math.PI * (R + 34) * ringDraw} 99999`} rot={-90 + t * 30} />
+            <Circle x={960} y={cy} r={R + 70} color={C.lilac} stroke={4} dash="14 22" rot={-t * 20} opacity={hold} />
+            <div style={{position: 'absolute', left: 960 - R, top: cy - R, width: 2 * R, height: 2 * R, borderRadius: '50%', overflow: 'hidden'}}>
+              <Img src={el('back_frame')} style={{position: 'absolute', left: -R * 0.3, top: -R * 0.3, width: R * 2.6, height: R * 2.6, opacity: 0.55, transform: `rotate(${t * 25}deg)`}} />
+            </div>
+            <Layer src="character" x={960} y={cy + 20 - 60 * (1 - rv)} w={570 * (0.6 + 0.4 * rv)} aspect={ASPECT.character}
+              transform={`translateY(${8 * Math.sin(t * 2.2) * hold}px) rotate(${2 * Math.sin(t * 1.3) * hold}deg) scale(${1 + beat})`}
+              opacity={clamp(rv * 3)} filter="drop-shadow(0 18px 18px rgba(20,5,40,0.45))">
+              <Shine src="character" t={t} at={[5.2, 7.4]} />
+            </Layer>
+          </>
+        )}
+        {t >= KN.text && (
+          <div style={{position: 'absolute', left: 960 - 450, top: 860 - 215, width: 900, height: 430, clipPath: `inset(0 ${100 - 100 * tw}% 0 0)`}}>
+            <Layer src="logo_text" x={450} y={215} w={840} aspect={ASPECT.logo_text} transform={`scale(${1 + beat})`} filter="drop-shadow(0 10px 12px rgba(0,0,0,0.4))">
+              <Shine src="logo_text" t={t} at={[4.6, 6.4, 8.2]} />
+            </Layer>
+          </div>
+        )}
+        {bar && <div style={{position: 'absolute', left: 960 - 460 + 920 * tw - 20, top: 670, width: 40, height: 380, borderRadius: 20, background: C.orange,
+          transform: `scaleY(${Math.sin(Math.PI * clamp((t - KN.text) / 0.95))})`}} />}
       </AbsoluteFill>
     </AbsoluteFill>
   );
