@@ -3,6 +3,14 @@
 คลิป intro แบบ motion graphic ทำจากโลโก้ด้วยโค้ด ไม่ใช้ AI **ไม่เสียเครดิต Higgsfield**
 ตัวอย่างด้านล่างเป็นภาพย่อ ไฟล์จริงคือ 1920×1080, 30fps, 5 วินาที, มีเสียง
 
+### 🎬 ใหม่: 10 วินาที (Remotion, 30fps)
+
+| แบบ | เรื่องราว | วิดีโอ |
+|---|---|---|
+| 🕵️ Heist | ห้องนิรภัย เลเซอร์ อุ้งเท้าฉกเหรียญ สัญญาณเตือน กระต่ายพุ่งผ่าน ไซเรน | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/9d496118-2f1b-4a6e-816e-a206403fd449.mp4) |
+| 🃏 Card Reveal | การ์ดหมุนเข้า พลิกโฮโลแกรม กระต่ายทะลุออกจากการ์ด | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/538b5c78-da03-446d-8787-96082df554cc.mp4) |
+| 🔷 Kinetic | วงกลมสีเปลี่ยนฉาก เส้นกราฟิก เผยกระต่ายในวงกลม รูปทรงโคจร | [▶️ ดู](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/aed7f201-0df4-42a5-a34c-4af10878675e.mp4) |
+
 ### 🐰 ใหม่: Elements Intro (Remotion, 60fps, 6 วิ) — ใช้ชิ้นส่วนจาก `intro/elements`
 
 วงพลังงานเปิด → กระต่ายพุ่งออกมา → ตัวหนังสือกระแทก → เหรียญหมุนโคจรรอบ → อุ้งเท้าฉกเข้ากล้อง
