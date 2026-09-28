@@ -21,11 +21,15 @@ jobs:
       - run: pip install numpy pillow
       - run: npm ci --no-audit --no-fund
       - name: Prepare assets
-        run: cp ../logo.png public/logo.png && python3 make_audio.py
+        run: |
+          cp ../logo.png public/logo.png && mkdir -p public/el && cp ../elements/*.png public/el/
+          python3 make_audio.py && python3 make_audio_elements.py
       - name: Render
-        run: npx remotion render ClawReveal out/claw-reveal.mp4 --crf=18
+        run: |
+          npx remotion render ElementsIntro out/elements-intro.mp4 --crf=18
+          npx remotion render ClawReveal out/claw-reveal.mp4 --crf=18
       - uses: actions/upload-artifact@v4
         with:
-          name: claw-reveal
-          path: intro/remotion/out/claw-reveal.mp4
+          name: pro-intro-clips
+          path: intro/remotion/out/*.mp4
           retention-days: 30

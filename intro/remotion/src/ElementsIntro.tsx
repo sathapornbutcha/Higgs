@@ -10,8 +10,9 @@ export const BEATS = [2.0, 2.5, 3.0, 3.5, 4.0, 4.5];
 const PURPLE = '139,61,255';
 const el = (n: string) => staticFile(`el/${n}.png`);
 const COIN = ['coin_01', 'coin_02', 'coin_03', 'coin_04', 'coin_05', 'coin_06'];
-const CHAR = {x: 960, y: 405, w: 760};
-const TEXT = {x: 960, y: 845, w: 900};
+const CHAR = {x: 960, y: 430, w: 680};
+const TEXT = {x: 960, y: 860, w: 860};
+const pawP = (t: number) => eIn(clamp((t - E.paw) / (E.black - E.paw)));
 
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const eIn = (p: number) => p * p * p;
@@ -63,7 +64,7 @@ const Character: React.FC = () => {
   const tilt = 2.5 * Math.sin(t * 1.3) * live;
   let beat = 0;
   for (const b of BEATS) beat += 0.02 * decay(t, b, 12);
-  const pawOut = eIn(clamp((t - E.paw) / 0.25));
+  const pawOut = clamp((pawP(t) - 0.35) / 0.3);
   const scale = (0.15 + 0.85 * s) * (1 + beat) * (1 - 0.1 * Math.sin(Math.PI * clamp((t - E.paw + 0.2) / 0.2)));
   return (
     <div style={{position: 'absolute', left: CHAR.x - CHAR.w / 2, top: CHAR.y - CHAR.w * 0.435, width: CHAR.w,
@@ -116,7 +117,7 @@ const Coins: React.FC<{t: number; front: boolean}> = ({t, front}) => {
         const r = 640 * (0.3 + 0.7 * eOut(appear)) * (1 + out);
         const x = CHAR.x + r * Math.cos(th), y = 520 + 150 * depth * (0.3 + 0.7 * eOut(appear));
         const frameIdx = Math.floor((t * 10 + i * 1.7) % 6);
-        const w = (70 + 30 * (depth + 1) / 2) * (COIN[frameIdx] === 'coin_04' ? 0.25 : 1);
+        const w = (110 + 50 * (depth + 1) / 2) * (COIN[frameIdx] === 'coin_04' ? 0.25 : 1);
         return <Sprite key={i} src={COIN[frameIdx]} x={x} y={y} w={w}
           style={{opacity: appear * (1 - out) * (0.65 + 0.35 * (depth + 1) / 2)}} filter="drop-shadow(0 0 10px rgba(255,190,60,0.6))" />;
       })}
@@ -150,11 +151,12 @@ const Paw: React.FC = () => {
   const frame = useCurrentFrame();
   const t = frame / 60;
   if (t < E.paw - 0.05) return null;
-  const p = eIn(clamp((t - E.paw) / (E.black - E.paw)));
-  const w = 180 + 5200 * p;
+  const p = pawP(t);
+  const w = 200 + 4600 * p;
+  const cx = interpolate(p, [0, 0.5, 1], [CHAR.x + 120, 960, 960]), cy = interpolate(p, [0, 0.5, 1], [CHAR.y + 190, 560, 540]);
   return (
-    <div style={{position: 'absolute', left: 960 - w / 2, top: 470 - w * 0.35, width: w, transform: `rotate(${-12 + 20 * p}deg)`}}>
-      <Img src={el('paw')} style={{width: '100%', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.6))'}} />
+    <div style={{position: 'absolute', left: cx - w / 2, top: cy - w * 0.35, width: w, transform: `rotate(${-8 + 16 * p}deg)`, opacity: clamp(p * 20)}}>
+      <Img src={el('paw')} style={{width: '100%', filter: `blur(${10 * clamp((p - 0.4) / 0.6)}px) drop-shadow(0 20px 30px rgba(0,0,0,0.6))`}} />
     </div>
   );
 };
