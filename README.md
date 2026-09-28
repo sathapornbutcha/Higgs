@@ -1,21 +1,16 @@
 # The Snatchers — Intro Clips
 
-คลิป intro แบบ motion graphic 10 สไตล์ ทำจากโลโก้ด้วยโค้ด ไม่ใช้ AI **ไม่เสียเครดิต Higgsfield**
+คลิป intro แบบ motion graphic ทำจากโลโก้ด้วยโค้ด ไม่ใช้ AI **ไม่เสียเครดิต Higgsfield**
 ตัวอย่างด้านล่างเป็นภาพย่อ ไฟล์จริงคือ 1920×1080, 30fps, 5 วินาที, มีเสียง
 
-### 🏆 Pro: Snatch Pro (Remotion, 60fps)
+### 🏆 Claw Reveal (Remotion, 60fps) — ใช้โลโก้ทั้งภาพ
 
-3D parallax, motion blur จริง, แสงเรือง, แสงวิ้งตามรูปโลโก้ — ▶️ [ดูวิดีโอเต็ม](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/d7451175-dffd-44be-84a0-5600513e4946.mp4)
+กรงเล็บแสงข่วนผ่านจอ → โลโก้พุ่งออกมาหมุน 3D → เหรียญแตก → ลอยเอียงสะท้อนแสง → ซูมทะลุกล้อง
+▶️ วิดีโอเต็ม: กำลังเรนเดอร์
 
-<img src="intro/previews/snatch-pro.gif" width="100%">
+
 
 ทำใหม่เอง: แท็บ **Actions** → **Make intro clip (Pro, Remotion)** → **Run workflow**
-
-### ⭐ ใหม่: Snatch (`snatch`) — กระต่ายกับตัวหนังสือขยับแยกกัน
-
-ตัวหนังสือกระแทกขึ้นจากล่าง → กระต่ายพุ่งตะปบลงมาประกบ → เหรียญแตกกระจาย → จบด้วยกระต่ายฉกหนีขึ้นจอ
-
-<img src="intro/previews/snatch.gif" width="100%">
 
 ### สไตล์อื่น ๆ
 

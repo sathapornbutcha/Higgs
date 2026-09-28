@@ -8,7 +8,7 @@ on:
         required: true
         default: "intro/logo.png"
       styles:
-        description: "Styles: all, or a comma list of snatch, energy, glitch, claw, comic, portal, neon, pixel, splash, minimal"
+        description: "Styles: all, or a comma list of energy, glitch, claw, comic, portal, neon, pixel, splash, minimal"
         required: true
         default: "all"
       name:
