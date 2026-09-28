@@ -36,6 +36,10 @@ self-serve instructions (Thai): [HOW_TO.md](HOW_TO.md). 1920×1080, 30 fps, 5 s,
 | Claw Snatch | `claw.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/229b241c-2835-46bf-a561-cb85177b8f99.mp4 |
 | Comic Pop | `comic.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/77d20c1a-42e5-4fcd-b526-d9c68dcb5ddc.mp4 |
 | Magic Portal | `portal.py` | https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/60cd2b06-6f69-4fb4-8a38-8b952122df11.mp4 |
+| Neon Sign | `neon.py` | GitHub Actions artifact |
+| Arcade 8-bit | `pixel.py` | GitHub Actions artifact |
+| Paint Splash | `splash.py` | GitHub Actions artifact |
+| Clean Minimal | `minimal.py` | GitHub Actions artifact |
 
 Preview sheets: [energy](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/464868e5-ac9d-45e2-ac5a-169347005dd0.jpg),
 [other four](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/30de63af-3ae6-43ae-b20b-702bbd682ba6.jpg).
