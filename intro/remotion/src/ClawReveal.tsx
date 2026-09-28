@@ -16,7 +16,7 @@ const eIn = (p: number) => p * p * p;
 const eOut = (p: number) => 1 - Math.pow(1 - p, 3);
 const decay = (t: number, t0: number, k: number) => (t >= t0 ? Math.exp(-(t - t0) * k) : 0);
 
-const Background: React.FC<{t: number; frame: number}> = ({t, frame}) => {
+export const Background: React.FC<{t: number; frame: number}> = ({t, frame}) => {
   const lit = clamp((t - 0.1) / 0.6);
   const rays = clamp((t - T.reveal) / 0.6) * (1 - clamp((t - T.out) / 0.4));
   const blobs = [
