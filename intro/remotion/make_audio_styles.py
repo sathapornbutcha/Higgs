@@ -101,4 +101,26 @@ tt = m.ts(0.6)
 m.at(4.3, m.sweep(1700 - 1300 * (tt / 0.6) ** 1.5) * 0.13)
 m.kick(4.85, 0.6)
 m.write(os.path.join(OUT, "sfx_cute.wav"))
+# Draw (speed-art): 125 BPM EDM, pen scribbles, taps, riser and drop into the finale
+m = mix(6.0, 5)
+beat = 0.48
+for k, b in enumerate(np.arange(0.0, 5.4, beat)):
+    m.kick(b, 0.95 if b >= 3.9 else 0.55)
+    m.hat(b + beat / 2, 0.2)
+    if k % 2:
+        snare(m, b, 0.28 if b >= 1.85 else 0.15)
+chords = ((57, 60, 64), (53, 57, 60), (55, 59, 62), (52, 55, 59))
+for k, b in enumerate(np.arange(1.85, 5.4, beat * 2)):
+    for n in chords[k % 4]:
+        saw(m, b, midi(n), beat * 2 - 0.02, 0.05 if b < 3.9 else 0.08, 1.5)
+for t0 in np.arange(0.3, 1.8, 0.07):
+    nz = m.noise(0.06)
+    m.at(t0, (nz - m.lp(nz, 2)) * np.exp(-20 * m.ts(0.06)) * 0.06)
+for tap in (2.2, 2.55, 3.05, 3.3, 3.55, 3.75):
+    m.chime(tap, ((1760, 0.08), (2637, 0.05)), d=0.35, rise=0.0)
+tt = m.ts(0.9)
+m.at(3.0, m.lp(m.noise(0.9), 6) * (tt / 0.9) ** 2 * 0.4 + m.sweep(300 + 2000 * (tt / 0.9) ** 2) * (tt / 0.9) * 0.08)
+m.boom(3.9, 1.0, 1.2)
+m.boom(5.4, 0.8, 0.5)
+m.write(os.path.join(OUT, "sfx_draw.wav"))
 print("ok")
