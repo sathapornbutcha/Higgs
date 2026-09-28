@@ -6,7 +6,9 @@
 ### 🏆 Claw Reveal (Remotion, 60fps) — ใช้โลโก้ทั้งภาพ
 
 กรงเล็บแสงข่วนผ่านจอ → โลโก้พุ่งออกมาหมุน 3D → เหรียญแตก → ลอยเอียงสะท้อนแสง → ซูมทะลุกล้อง
-▶️ วิดีโอเต็ม: กำลังเรนเดอร์
+▶️ [ดูวิดีโอเต็ม](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/2bb5b122-6259-4e2c-a623-7a4f9676201c.mp4)
+
+<img src="intro/previews/claw-reveal.gif" width="100%">
 
 
 
