@@ -23,8 +23,26 @@ def spring(tau, k=12, w=22):
 
 def load_logo(path, h=880):
     logo = Image.open(path).convert("RGBA")
-    logo = logo.crop(logo.getbbox())
+    logo = logo.crop(logo.getchannel("A").point(lambda v: 255 if v > 16 else 0).getbbox())  # ignore faint alpha haze
     return logo, round(logo.width * h / logo.height), h
+
+
+def sticker(img, width=12, color=WHITE, shadow=120, off=(12, 16)):
+    """Logo with a rounded solid outline and soft drop shadow, so it reads on busy or same-colored backgrounds."""
+    p = width * 2 + max(off)
+    base = Image.new("RGBA", (img.width + 2 * p, img.height + 2 * p), (0, 0, 0, 0))
+    base.alpha_composite(img, (p, p))
+    a = base.getchannel("A").point(lambda v: 255 if v > 40 else 0).filter(ImageFilter.GaussianBlur(width / 2)).point(lambda v: 255 if v > 30 else 0)
+    out = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    if shadow:
+        sh = Image.new("RGBA", base.size, (20, 5, 35, 0))
+        sh.putalpha(a.point(lambda v: v * shadow // 255).filter(ImageFilter.GaussianBlur(8)))
+        out.alpha_composite(sh.crop((0, 0, base.width - off[0], base.height - off[1])), off)
+    ring = Image.new("RGBA", base.size, color + (0,))
+    ring.putalpha(a)
+    out.alpha_composite(ring)
+    out.alpha_composite(base)
+    return out
 
 
 def sized(logo, lw, lh, s, rot=0.0):

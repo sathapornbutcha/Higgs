@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       logo:
-        description: "Logo PNG (transparent background) — Google Drive share link, image URL, or a path in this repo"
+        description: "Logo PNG (transparent background) — path in this repo, Google Drive share link, or image URL"
         required: true
-        default: "https://drive.google.com/file/d/1_53IwLgUiRIk2cWbpJhWjRbXs1ZUcrnz/view?usp=sharing"
+        default: "intro/logo.png"
       styles:
         description: "Styles: all, or a comma list of energy, glitch, claw, comic, portal, neon, pixel, splash, minimal"
         required: true

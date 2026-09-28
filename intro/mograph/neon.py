@@ -33,6 +33,7 @@ def build(logo_path):
     padded = Image.new("RGBA", (logo.width + 2 * pad, logo.height + 2 * pad), (0, 0, 0, 0))
     padded.alpha_composite(logo, (pad, pad))
     a = padded.getchannel("A").point(lambda v: 255 if v > 100 else 0)
+    a = a.filter(ImageFilter.GaussianBlur(18)).point(lambda v: 255 if v > 110 else 0)  # smooth silhouette -> clean tube
     outline = ImageChops.subtract(a.filter(ImageFilter.MaxFilter(13)), a.filter(ImageFilter.MaxFilter(5)))
 
     def colored(mask, col):

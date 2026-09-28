@@ -39,7 +39,9 @@ def draw_splat(d, cx, cy, shape, R, s, col):
 
 
 def build(logo_path):
-    LOGO, LW, LH = load_logo(logo_path, 820)
+    LOGO, LW, LH = load_logo(logo_path, 800)
+    LOGO = sticker(sized(LOGO, LW, LH, 1.0))
+    LW, LH = LOGO.size
     paper = np.full((H, W, 3), (244, 236, 222), np.float32)
     paper += np.random.default_rng(2).normal(0, 5, (H, W, 1))
     BG = Image.fromarray(np.clip(paper, 0, 255).astype(np.uint8))

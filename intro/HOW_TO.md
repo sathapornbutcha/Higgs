@@ -20,8 +20,8 @@
 1. เปิด repo นี้บน GitHub → แท็บ **Actions** → เลือก **Make intro clip** ทางซ้าย
 2. กด **Run workflow** (ปุ่มขวามือ)
 3. กรอก
-   - **logo**: ลิงก์ Google Drive ของโลโก้ (ตั้งแชร์เป็น "ทุกคนที่มีลิงก์") หรือลิงก์รูป PNG
-     — ค่าเริ่มต้นคือโลโก้ The Snatchers อยู่แล้ว
+   - **logo**: ค่าเริ่มต้น `intro/logo.png` คือโลโก้ The Snatchers ที่อยู่ใน repo แล้ว ไม่ต้องแก้
+     — ใช้โลโก้อื่น: ใส่ลิงก์ Google Drive (แชร์แบบ "ทุกคนที่มีลิงก์") หรือลิงก์รูป PNG
    - **styles**: `all` (ทั้ง 9 แบบ) หรือเลือกเฉพาะ เช่น `claw,neon,minimal`
    - **name**: ชื่อไฟล์ เช่น `snatchers`
 4. กด **Run workflow** สีเขียว รอประมาณ 2–4 นาที
