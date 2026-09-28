@@ -1,0 +1,31 @@
+name: Make intro clip (Pro, Remotion)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: intro/remotion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install numpy pillow
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare assets
+        run: cp ../layers/top.png ../layers/bottom.png public/ && python3 make_audio.py
+      - name: Render
+        run: npx remotion render SnatchPro out/snatch-pro.mp4 --crf=18
+      - uses: actions/upload-artifact@v4
+        with:
+          name: snatch-pro
+          path: intro/remotion/out/snatch-pro.mp4
+          retention-days: 30
