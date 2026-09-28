@@ -4,8 +4,8 @@ import {CameraMotionBlur} from '@remotion/motion-blur';
 import {ASPECT, Grain, Layer, ORANGE, PURPLE, Shine, Sprite, beatPulse, clamp, decay, eInOut, eOut, springT} from './lib';
 
 // Anime opening: pans across details, an eye glint, a diagonal split-screen hero pose and a sliding title.
-export const AN = {eyes: 1.0, hero: 1.6, text: 2.1, out: 4.7, end: 5.5};
-export const AN_BEATS = [2.4, 2.9, 3.4, 3.9, 4.4];
+export const AN = {eyes: 1.0, hero: 1.6, text: 2.1, out: 9.2, end: 10.0};
+export const AN_BEATS = Array.from({length: 14}, (_, i) => 2.4 + 0.5 * i);
 
 const Radial: React.FC<{t: number; color: string; inner?: number; seed: string; spin?: number}> = ({t, color, inner = 380, seed, spin = 0}) => (
   <svg width="1920" height="1080" style={{position: 'absolute', inset: 0}}>
@@ -99,7 +99,7 @@ const Title: React.FC<{t: number}> = ({t}) => {
     <Layer src="logo_text" x={960 - 1500 * (1 - clamp(p, 0, 1.2)) + 1800 * out} y={870} w={880} aspect={ASPECT.logo_text}
       transform={`skewX(${(1 - p) * 30}deg) scale(${1 + beat})`} opacity={clamp(p * 4)}
       filter={`drop-shadow(5px 0 0 white) drop-shadow(-5px 0 0 white) drop-shadow(0 5px 0 white) drop-shadow(0 -5px 0 white) drop-shadow(0 16px 20px rgba(40,0,80,0.5))`}>
-      <Shine src="logo_text" t={t} at={[2.9, 4.0]} />
+      <Shine src="logo_text" t={t} at={[2.9, 4.6, 6.4, 8.2]} />
     </Layer>
   );
 };
@@ -129,7 +129,7 @@ export const Anime: React.FC = () => {
   return (
     <AbsoluteFill style={{backgroundColor: 'black', overflow: 'hidden'}}>
       <Audio src={staticFile('sfx_anime.wav')} />
-      <AbsoluteFill style={{transform: `translate(${amp * Math.sin(t * 97)}px, ${amp * Math.cos(t * 83)}px) scale(${1 + 0.05 * clamp((t - AN.hero) / 3)})`}}>
+      <AbsoluteFill style={{transform: `translate(${amp * Math.sin(t * 97)}px, ${amp * Math.cos(t * 83)}px) scale(${1 + 0.07 * clamp((t - AN.hero) / 7.6)})`}}>
         <CameraMotionBlur shutterAngle={200} samples={4}>
           <Shots t={t} />
         </CameraMotionBlur>

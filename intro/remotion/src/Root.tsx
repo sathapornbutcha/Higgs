@@ -7,16 +7,16 @@ import {Draw} from './Draw';
 import {ElementsIntro} from './ElementsIntro';
 import {Esports} from './Esports';
 
-const V = {fps: 60, width: 1920, height: 1080};
+const V = {fps: 30, width: 1920, height: 1080};
 
 export const Root: React.FC = () => (
   <>
-    <Composition id="ElementsIntro" component={ElementsIntro} durationInFrames={360} {...V} />
-    <Composition id="Draw" component={Draw} durationInFrames={360} {...V} />
+    <Composition id="ElementsIntro" component={ElementsIntro} durationInFrames={300} {...V} />
+    <Composition id="Draw" component={Draw} durationInFrames={300} {...V} />
     <Composition id="Esports" component={Esports} durationInFrames={300} {...V} />
-    <Composition id="Anime" component={Anime} durationInFrames={330} {...V} />
-    <Composition id="Cinematic" component={Cinematic} durationInFrames={360} {...V} />
+    <Composition id="Anime" component={Anime} durationInFrames={300} {...V} />
+    <Composition id="Cinematic" component={Cinematic} durationInFrames={300} {...V} />
     <Composition id="Cute" component={Cute} durationInFrames={300} {...V} />
-    <Composition id="ClawReveal" component={ClawReveal} durationInFrames={300} {...V} />
+    <Composition id="ClawReveal" component={ClawReveal} durationInFrames={300} fps={60} width={1920} height={1080} />
   </>
 );

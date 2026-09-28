@@ -5,8 +5,8 @@ import {ASPECT, Coin, Grain, Layer, ORANGE, PURPLE, Shine, Sprite, Vignette, bea
 
 // Esports / gaming stinger: hard cuts on the beat, close-ups, then a slam lockup. 150 BPM.
 export const B = 0.4;
-export const ES = {face: 0.4, paw: 0.8, coin: 1.2, slam: 1.6, text: 1.68, exit: 4.2, end: 5.0};
-export const ES_BEATS = [2.0, 2.4, 2.8, 3.2, 3.6, 4.0];
+export const ES = {face: 0.4, paw: 0.8, coin: 1.2, slam: 1.6, text: 1.68, exit: 9.2, end: 10.0};
+export const ES_BEATS = Array.from({length: 18}, (_, i) => +(2.0 + 0.4 * i).toFixed(2));
 
 const Bars: React.FC<{p: number; colors: string[]; dir?: 1 | -1}> = ({p, colors, dir = 1}) => (
   <>
@@ -86,7 +86,7 @@ const Lockup: React.FC = () => {
       {t >= ES.text && (
         <Layer src="logo_text" x={960 - jx} y={860} w={900} aspect={ASPECT.logo_text}
           transform={`scale(${(2.6 - 1.6 * ts) * (1 + beat)}) skewX(${(1 - ts) * -18}deg)`} opacity={clamp(ts * 5)} filter={`${glow} ${rgb}`}>
-          <Shine src="logo_text" t={t} at={[2.3, 3.5]} />
+          <Shine src="logo_text" t={t} at={[2.3, 4.3, 6.3, 8.3]} />
         </Layer>
       )}
     </>
@@ -155,7 +155,7 @@ export const Esports: React.FC = () => {
   const dx = amp * Math.sin(t * 97), dy = amp * Math.cos(t * 83);
   const cutFlash = [ES.face, ES.paw, ES.coin].some((c) => t >= c && t < c + 1 / 30) ? 0.7 : 0;
   const flash = Math.max(cutFlash, 0.45 * decay(t, ES.slam, 20), 0.2 * decay(t, ES.text, 24));
-  const push = 1 + 0.04 * clamp((t - ES.slam) / 2.6);
+  const push = 1 + 0.06 * clamp((t - ES.slam) / 7.6);
   return (
     <AbsoluteFill style={{backgroundColor: 'black', overflow: 'hidden'}}>
       <Audio src={staticFile('sfx_esports.wav')} />

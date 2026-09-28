@@ -3,7 +3,7 @@ import {AbsoluteFill, Audio, Img, random, staticFile, useCurrentFrame, useVideoC
 import {ASPECT, Coin, Grain, Layer, PURPLE, Shine, Vignette, clamp, eInOut, el} from './lib';
 
 // Cinematic trailer: darkness, fog and dust, the character revealed by rim light, the title scanned in by a light sweep.
-export const CI = {frame: 0.3, flare: 1.15, char: 1.5, title: 3.0, glint: 3.9, fade: 5.2, end: 6.0};
+export const CI = {frame: 0.3, flare: 1.15, char: 1.5, title: 3.0, glint: 3.9, fade: 9.2, end: 10.0};
 
 const Fog: React.FC<{t: number}> = ({t}) => (
   <>
@@ -66,13 +66,13 @@ export const Cinematic: React.FC = () => {
         <Layer src="character" x={960} y={420} w={690} aspect={ASPECT.character}
           transform={`scale(${1.04 - 0.04 * reveal}) translateY(${6 * Math.sin(t * 1.1)}px)`}
           filter={`brightness(${0.04 + 0.96 * reveal}) contrast(${1.25 - 0.25 * reveal}) drop-shadow(0 0 ${10 + 40 * reveal}px rgba(${PURPLE},${0.3 + 0.6 * reveal})) drop-shadow(0 30px 40px rgba(0,0,0,0.8))`}>
-          <Shine src="character" t={t} at={[CI.char + 0.4]} dur={1.1} />
+          <Shine src="character" t={t} at={[CI.char + 0.4, 5.6, 7.8]} dur={1.1} />
         </Layer>
         {t >= CI.title && (
           <div style={{WebkitMaskImage: mask, maskImage: mask, position: 'absolute', inset: 0}}>
             <Layer src="logo_text" x={960} y={865} w={820} aspect={ASPECT.logo_text}
               filter={`drop-shadow(0 0 ${18 + 30 * (1 - scan)}px rgba(255,190,120,0.7)) drop-shadow(0 16px 20px rgba(0,0,0,0.8))`}>
-              <Shine src="logo_text" t={t} at={[CI.glint - 0.3]} dur={0.8} />
+              <Shine src="logo_text" t={t} at={[CI.glint - 0.3, 6.6, 8.6]} dur={0.8} />
             </Layer>
           </div>
         )}
@@ -89,6 +89,7 @@ export const Cinematic: React.FC = () => {
         )}
         <Dust t={t} />
         <Flare t={t} t0={CI.flare} y={430} />
+        <Flare t={t} t0={6.2} y={330} dur={1.2} />
         <Flare t={t} t0={CI.fade - 0.3} y={600} dur={1.0} />
       </AbsoluteFill>
       {[0, 1, 2].map((i) => {

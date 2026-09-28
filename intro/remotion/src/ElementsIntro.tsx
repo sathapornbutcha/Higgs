@@ -5,8 +5,8 @@ import {Background} from './ClawReveal';
 
 // Built from the cut-out elements in intro/elements (copied to public/el).
 // Timeline (seconds). Keep in sync with make_audio_elements.py.
-export const E = {portal: 0.15, burst: 0.7, text: 1.25, hold: 1.7, paw: 4.75, black: 5.55, end: 6.0};
-export const BEATS = [2.0, 2.5, 3.0, 3.5, 4.0, 4.5];
+export const E = {portal: 0.15, burst: 0.7, text: 1.25, hold: 1.7, paw: 9.0, black: 9.8, end: 10.0};
+export const BEATS = Array.from({length: 14}, (_, i) => 2.0 + 0.5 * i);
 const PURPLE = '139,61,255';
 const el = (n: string) => staticFile(`el/${n}.png`);
 const COIN = ['coin_01', 'coin_02', 'coin_03', 'coin_04', 'coin_05', 'coin_06'];
@@ -99,7 +99,7 @@ const Title: React.FC<{t: number}> = ({t}) => {
 };
 
 const SHINE = (t: number) => {
-  for (const s of [2.2, 3.7]) if (t >= s && t < s + 0.6) return interpolate(t, [s, s + 0.6], [110, -10], {easing: Easing.inOut(Easing.cubic)});
+  for (const s of [2.2, 3.7, 5.6, 7.5]) if (t >= s && t < s + 0.6) return interpolate(t, [s, s + 0.6], [110, -10], {easing: Easing.inOut(Easing.cubic)});
   return null;
 };
 
@@ -149,7 +149,8 @@ const Effects: React.FC<{t: number}> = ({t}) => {
 
 const Paw: React.FC = () => {
   const frame = useCurrentFrame();
-  const t = frame / 60;
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
   if (t < E.paw - 0.05) return null;
   const p = pawP(t);
   const w = 200 + 4600 * p;

@@ -3,8 +3,8 @@ import {AbsoluteFill, Audio, random, staticFile, useCurrentFrame, useVideoConfig
 import {ASPECT, Coin, Layer, PURPLE, Shine, Sprite, beatPulse, clamp, eIn, springT} from './lib';
 
 // Cute / playful: pastel polka dots, props pop in, the character drops in with squash-and-stretch, jelly title, coin rain, iris out.
-export const CU = {char: 1.2, text: 1.65, coins: 1.9, iris: 4.3, end: 5.0};
-export const CU_HOPS = [2.2, 2.7, 3.2, 3.7];
+export const CU = {char: 1.2, text: 1.65, coins: 1.9, iris: 9.3, end: 10.0};
+export const CU_HOPS = Array.from({length: 14}, (_, i) => 2.2 + 0.5 * i);
 const FLOOR = 1045;
 
 const PROPS = [
@@ -65,7 +65,7 @@ export const Cute: React.FC = () => {
           <div style={{position: 'absolute', left: 960 - 260, top: 715, width: 520, height: 50, borderRadius: '50%', background: 'rgba(80,30,140,0.18)', filter: 'blur(8px)'}} />
         )}
         {t >= CU.coins && new Array(14).fill(0).map((_, i) => {
-          const t0 = CU.coins + random(`ct${i}`) * 1.2, tau = t - t0;
+          const t0 = CU.coins + random(`ct${i}`) * 1.2 + (i % 2 ? 3.6 : 0), tau = t - t0;
           if (tau < 0) return null;
           const x = 120 + random(`cx${i}`) * 1680;
           const g = 2600, v0 = 0;
@@ -78,7 +78,7 @@ export const Cute: React.FC = () => {
           return <Layer src="logo_text" x={960} y={860 + 300 * (1 - clamp(tau / 0.2))} w={860} aspect={ASPECT.logo_text}
             transform={`scale(${(1 + 0.3 * j) * (1 + beat)}, ${(1 - 0.3 * j) * (1 + beat)}) rotate(${3 * Math.sin(t * 2.5) * clamp((tau - 0.6) / 0.4)}deg)`}
             filter="drop-shadow(0 0 14px rgba(255,255,255,0.9)) drop-shadow(0 16px 14px rgba(80,30,140,0.35))">
-            <Shine src="logo_text" t={t} at={[2.6, 3.8]} />
+            <Shine src="logo_text" t={t} at={[2.6, 4.6, 6.6, 8.4]} />
           </Layer>;
         })()}
         {CU_HOPS.map((h, i) => {

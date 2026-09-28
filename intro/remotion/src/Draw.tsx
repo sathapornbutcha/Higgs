@@ -4,9 +4,9 @@ import {ASPECT, Coin, Grain, Layer, ORANGE, PURPLE, Sprite, beatPulse, clamp, de
 
 // "Speed-art" intro modelled on the reference short: the logo is sketched and coloured on a tablet,
 // backgrounds flip orange/blue with star patterns, effects are tapped on, then the camera dives into the screen. 125 BPM.
-export const DR = {sketch: 0.3, color: 1.3, orange: 1.85, blue: 2.9, dive: 3.9, flash: 5.4, end: 6.0};
+export const DR = {sketch: 0.4, color: 2.2, orange: 3.2, blue: 4.8, dive: 6.4, flash: 9.3, end: 10.0};
 const BEAT = 0.48;
-export const DR_BEATS = Array.from({length: 12}, (_, i) => +(0.48 * i).toFixed(2));
+export const DR_BEATS = Array.from({length: 21}, (_, i) => +(0.48 * i).toFixed(2));
 const SCR = {x: 210, y: 90, w: 1500, h: 900};
 const LOGO_H = 760, LOGO_W = (LOGO_H * 472) / 514; // logo_full is 472x514
 
@@ -65,7 +65,7 @@ const Screen: React.FC<{t: number; frame: number}> = ({t, frame}) => {
     }
   } else if (t < DR.blue) {
     content.push(<Stars key="o" id="o" t={t} color="rgba(255,255,255,0.25)" bg={`linear-gradient(160deg, #ffb13b, rgb(${ORANGE}) 50%, #e2560f)`} />);
-    const taps = [2.2, 2.55];
+    const taps = [DR.orange + 0.6, DR.orange + 1.1];
     const react = taps.reduce((s, a) => s + (t >= a ? Math.exp(-(t - a) * 9) * Math.cos((t - a) * 30) : 0), 0);
     const cs = springT(t - DR.orange, 9, 22);
     content.push(<Layer key="c" src="character" x={cx} y={cy + 10} w={820} aspect={ASPECT.character} origin="50% 90%"
@@ -82,8 +82,8 @@ const Screen: React.FC<{t: number; frame: number}> = ({t, frame}) => {
     pen = {x: from.x + (to.x - from.x) * eInOut(seg), y: from.y + (to.y - from.y) * eInOut(seg), press: taps.some((a) => t >= a - 0.05 && t < a + 0.08) ? 1 : 0};
   } else {
     content.push(<Stars key="b" id="b" t={t} color="rgba(255,255,255,0.2)" bg="linear-gradient(160deg, #3fa0ff, #1f5fe0 50%, #1b2f9e)" />);
-    const fx = [{t0: 3.05, n: 'effect_09', x: cx - 470, y: cy - 150, w: 420, r: -20}, {t0: 3.3, n: 'effect_06', x: cx + 470, y: cy - 130, w: 420, r: 20},
-      {t0: 3.55, n: 'effect_12', x: cx - 440, y: cy + 230, w: 380, r: 190}, {t0: 3.75, n: 'effect_10', x: cx + 460, y: cy + 240, w: 320, r: 0}];
+    const fx = [{t0: DR.blue + 0.3, n: 'effect_09', x: cx - 470, y: cy - 150, w: 420, r: -20}, {t0: DR.blue + 0.65, n: 'effect_06', x: cx + 470, y: cy - 130, w: 420, r: 20},
+      {t0: DR.blue + 1.0, n: 'effect_12', x: cx - 440, y: cy + 230, w: 380, r: 190}, {t0: DR.blue + 1.3, n: 'effect_10', x: cx + 460, y: cy + 240, w: 320, r: 0}];
     fx.forEach((f, i) => {
       const s = springT(t - f.t0, 10, 24);
       if (s > 0) content.push(<Sprite key={`f${i}`} src={f.n} x={f.x} y={f.y} w={f.w} rot={f.r + 6 * Math.sin(t * 8 + i)} sx={s} sy={s}
