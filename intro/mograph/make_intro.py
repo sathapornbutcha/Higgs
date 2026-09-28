@@ -8,7 +8,7 @@ Needs: pip install pillow numpy imageio-ffmpeg   (or a system ffmpeg on PATH)
 import argparse, importlib, os, re, shutil, sys, urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-STYLES = ("energy", "glitch", "claw", "comic", "portal", "neon", "pixel", "splash", "minimal")
+STYLES = ("snatch", "energy", "glitch", "claw", "comic", "portal", "neon", "pixel", "splash", "minimal")
 
 
 def fetch_logo(src, dest):

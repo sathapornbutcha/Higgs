@@ -1,7 +1,15 @@
 # The Snatchers — Intro Clips
 
-คลิป intro แบบ motion graphic 9 สไตล์ ทำจากโลโก้ด้วยโค้ด ไม่ใช้ AI **ไม่เสียเครดิต Higgsfield**
+คลิป intro แบบ motion graphic 10 สไตล์ ทำจากโลโก้ด้วยโค้ด ไม่ใช้ AI **ไม่เสียเครดิต Higgsfield**
 ตัวอย่างด้านล่างเป็นภาพย่อ ไฟล์จริงคือ 1920×1080, 30fps, 5 วินาที, มีเสียง
+
+### ⭐ ใหม่: Snatch (`snatch`) — กระต่ายกับตัวหนังสือขยับแยกกัน
+
+ตัวหนังสือกระแทกขึ้นจากล่าง → กระต่ายพุ่งตะปบลงมาประกบ → เหรียญแตกกระจาย → จบด้วยกระต่ายฉกหนีขึ้นจอ
+
+<img src="intro/previews/snatch.gif" width="100%">
+
+### สไตล์อื่น ๆ
 
 | **Energy Slam** (`energy`) | **Glitch / Cyber** (`glitch`) | **Claw Snatch** (`claw`) |
 |---|---|---|
