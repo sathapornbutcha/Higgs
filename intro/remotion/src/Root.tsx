@@ -6,11 +6,17 @@ import {Cute} from './Cute';
 import {Draw} from './Draw';
 import {ElementsIntro} from './ElementsIntro';
 import {Esports} from './Esports';
+import {Card} from './Card';
+import {Heist} from './Heist';
+import {Kinetic} from './Kinetic';
 
 const V = {fps: 30, width: 1920, height: 1080};
 
 export const Root: React.FC = () => (
   <>
+    <Composition id="Heist" component={Heist} durationInFrames={300} {...V} />
+    <Composition id="Card" component={Card} durationInFrames={300} {...V} />
+    <Composition id="Kinetic" component={Kinetic} durationInFrames={300} {...V} />
     <Composition id="ElementsIntro" component={ElementsIntro} durationInFrames={300} {...V} />
     <Composition id="Draw" component={Draw} durationInFrames={300} {...V} />
     <Composition id="Esports" component={Esports} durationInFrames={300} {...V} />
