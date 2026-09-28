@@ -3,6 +3,13 @@
 คลิป intro แบบ motion graphic ทำจากโลโก้ด้วยโค้ด ไม่ใช้ AI **ไม่เสียเครดิต Higgsfield**
 ตัวอย่างด้านล่างเป็นภาพย่อ ไฟล์จริงคือ 1920×1080, 30fps, 5 วินาที, มีเสียง
 
+### 🐰 ใหม่: Elements Intro (Remotion, 60fps, 6 วิ) — ใช้ชิ้นส่วนจาก `intro/elements`
+
+วงพลังงานเปิด → กระต่ายพุ่งออกมา → ตัวหนังสือกระแทก → เหรียญหมุนโคจรรอบ → อุ้งเท้าฉกเข้ากล้อง
+▶️ [ดูวิดีโอเต็ม](https://d2ol7oe51mr4n9.cloudfront.net/user_3JUM3dHzNuPuytSmn31lrQk8N8H/034564a3-55d6-4e8c-b71b-90f63bfdad7f.mp4)
+
+<img src="intro/previews/elements-intro.gif" width="100%">
+
 ### 🏆 Claw Reveal (Remotion, 60fps) — ใช้โลโก้ทั้งภาพ
 
 กรงเล็บแสงข่วนผ่านจอ → โลโก้พุ่งออกมาหมุน 3D → เหรียญแตก → ลอยเอียงสะท้อนแสง → ซูมทะลุกล้อง
