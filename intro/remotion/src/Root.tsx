@@ -8,6 +8,7 @@ import {ElementsIntro} from './ElementsIntro';
 import {Esports} from './Esports';
 import {Card} from './Card';
 import {Chest} from './Chest';
+import {Snatch} from './Snatch';
 import {CoinFlip} from './CoinFlip';
 import {Gacha} from './Gacha';
 import {Heist} from './Heist';
@@ -17,6 +18,7 @@ const V = {fps: 30, width: 1920, height: 1080};
 
 export const Root: React.FC = () => (
   <>
+    <Composition id="Snatch" component={Snatch} durationInFrames={300} {...V} />
     <Composition id="Chest" component={Chest} durationInFrames={300} {...V} />
     <Composition id="Gacha" component={Gacha} durationInFrames={300} {...V} />
     <Composition id="CoinFlip" component={CoinFlip} durationInFrames={300} {...V} />

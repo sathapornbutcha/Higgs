@@ -23,10 +23,10 @@ jobs:
       - name: Prepare assets
         run: |
           cp ../logo.png public/logo.png && mkdir -p public/el && cp ../elements/*.png public/el/
-          python3 make_audio.py && python3 make_audio_elements.py && python3 make_audio_styles.py
+          python3 make_audio.py && python3 make_audio_elements.py && python3 make_audio_styles.py && python3 make_audio_new.py && python3 make_audio_loot.py && python3 make_audio_snatch.py
       - name: Render
         run: |
-          for c in ElementsIntro Draw Esports Anime Cinematic Cute; do npx remotion render $c out/$c.mp4 --crf=18; done
+          for c in Snatch Chest Gacha CoinFlip Card Heist Kinetic ElementsIntro Draw Esports Anime Cinematic Cute; do npx remotion render $c out/$c.mp4 --crf=18; done
           npx remotion render ClawReveal out/claw-reveal.mp4 --crf=18
       - uses: actions/upload-artifact@v4
         with:
